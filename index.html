@@ -12,22 +12,105 @@
     --text:#f3f3f3;
     --mono:"Hiragino Mincho ProN","MS Mincho",serif;
   }
-  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:var(--mono);line-height:1.9}
-  .wrap{max-width:980px;margin:40px auto;padding:28px;border:1px solid #1f1f1f;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);box-shadow:0 10px 30px rgba(0,0,0,0.6)}
-  header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #222;padding-bottom:12px;margin-bottom:18px}
-  header h1{font-size:1.4rem;letter-spacing:.08em;margin:0}
-  header .meta{font-size:0.85rem;color:var(--muted);text-align:right}
-  .section{background:var(--card);padding:18px;border-left:4px solid #222;margin:18px 0;border-radius:4px}
-  .section h2{margin:0 0 8px 0;color:var(--accent);font-size:1.05rem}
-  .section p{margin:8px 0;color:var(--text)}
-  .bullets{margin:8px 0 0 1.1em}
-  .bullets li{margin:6px 0}
-  .note{font-size:0.9rem;color:var(--muted);margin-top:12px;padding-top:8px;border-top:1px dashed #222}
-  .footer{margin-top:20px;text-align:right;color:var(--muted);font-size:0.9rem}
+  html,body{
+    height:100%;
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--mono);
+    line-height:1.9
+  }
+  .wrap{
+    max-width:980px;
+    margin:40px auto;
+    padding:28px;
+    border:1px solid #1f1f1f;
+    background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);
+    box-shadow:0 10px 30px rgba(0,0,0,0.6)
+  }
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #222;
+    padding-bottom:12px;
+    margin-bottom:18px
+  }
+  header h1{
+    font-size:1.4rem;
+    letter-spacing:.08em;
+    margin:0
+  }
+  header .meta{
+    font-size:0.85rem;
+    color:var(--muted);
+    text-align:right
+  }
+  .section{
+    background:var(--card);
+    padding:18px;
+    border-left:4px solid #222;
+    margin:18px 0;
+    border-radius:4px
+  }
+  .section h2{
+    margin:0 0 8px 0;
+    color:var(--accent);
+    font-size:1.05rem
+  }
+  .section p{
+    margin:8px 0;
+    color:var(--text)
+  }
+  .bullets{
+    margin:8px 0 0 1.1em
+  }
+  .bullets li{
+    margin:6px 0
+  }
+  .note{
+    font-size:0.9rem;
+    color:var(--muted);
+    margin-top:12px;
+    padding-top:8px;
+    border-top:1px dashed #222
+  }
+  .footer{
+    margin-top:20px;
+    text-align:right;
+    color:var(--muted);
+    font-size:0.9rem
+  }
   .warn{color:#ffb86b;font-weight:600}
   .sig{margin-top:18px}
   a{color:#fff;text-decoration:underline}
-  .hero{width:100%;height:auto;border-radius:6px;object-fit:cover;display:block;margin:0 auto}
+  .hero{
+    width:100%;
+    height:auto;
+    border-radius:6px;
+    object-fit:cover;
+    display:block;
+    margin:0 auto
+  }
+
+  /* 戻るボタン */
+  .back-btn-wrap {
+    text-align: center;
+    margin: 40px 0;
+  }
+  .back-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .back-btn:hover {
+    background: #a93226;
+  }
 </style>
 </head>
 <body>
@@ -40,18 +123,18 @@
       </div>
     </header>
 
-  <section class="section">
+    <section class="section">
       <h2>1. 目的（Objective）</h2>
       <p>本計画は、桐須瑛人を狭間の空間（Liminal space）に幽閉することで社内の風潮を刷新し、長期的な書籍価値の維持に寄与することを目的とする。</p>
     </section>
 
-  <section class="section">
+    <section class="section">
       <h2>2. 背景（Background）</h2>
       <p>弊社の出版物のデジタル化に対して、桐須氏は否定的な態度を見せた。スペース削減、流通の効率化、保存性、共有性、あらゆる側面において電子書籍は紙書籍より優れている。現体制のまま出版業界で生き残ることに限界を感じている旨も伝えたが、桐須氏の意思は固かった。<br>
       同時期、株式会社 芸文社に勤める旧友よりM＆Aの話を耳にした。最悪の状況を避けるために反対勢力を排除し、狭間書房の再建を試みる。</p>
-  </section>
+    </section>
 
-  <section class="section">
+    <section class="section">
       <h2>3. 実施内容（Content）</h2>
       <p>「Liminal space」にまつわる都市伝説の有効性が確認されたため、実行する。<br>
       以下がその都市伝説の概要である。<br>
@@ -64,13 +147,14 @@
       </p>
     </section>
 
-  <section class="section">
+    <section class="section">
       <h2>4. 想定効果（Expected Effects）</h2>
       <ul class="bullets">
         <li>電子書籍化導入による経営の再建</li>
         <li>ターゲットの拡大</li>
       </ul>
     </section>
+
     <section class="section">
       <h2>5. リスク評価（Risk Assessment）</h2>
       <ul class="bullets">
@@ -81,7 +165,8 @@
       </ul>
       <p class="note">※ 上記リスクは実施前に軽減策を講じること。</p>
     </section>
-  <section class="section">
+
+    <section class="section">
       <h2>6. 緊急時対応（Contingency）</h2>
       <p>想定外の事態が発生した場合は、速やかに以下を発動する。</p>
       <ul class="bullets">
@@ -89,15 +174,22 @@
         <li>社外秘データの削除</li>
       </ul>
     </section>
- <section class="section">
+
+    <section class="section">
       <h2>7. 結び（Summary）</h2>
       <p>本計画は「象徴的な不在」を通じて弊社の方針を刷新するための概念案である。全ては書籍および狭間書房の未来のための計画である。<br>
       最後に、私が全ての計画を着想した元である一枚の絵に敬意を示して計画書の完成とする。</p>
       <div class="sig">
-      <img id="hero" class="hero" src="gazou/last.jpg" alt="レオナルド・ダ・ヴィンチ『最後の晩餐』" />
+        <img id="hero" class="hero" src="gazou/last.jpg" alt="レオナルド・ダ・ヴィンチ『最後の晩餐』" />
       </div>
     </section>
-
   </div>
+
+  <!-- 戻るボタン -->
+  <div class="back-btn-wrap">
+    <button class="back-btn" onclick="history.back()">← 一つ前のページに戻る</button>
+  </div>
+
 </body>
 </html>
+
