@@ -1,195 +1,431 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<title>計画書</title>
-<style>
-  :root{
-    --bg:#0d0d0d;
-    --card:#141414;
-    --accent:#c0392b;
-    --muted:#9aa5a8;
-    --text:#f3f3f3;
-    --mono:"Hiragino Mincho ProN","MS Mincho",serif;
-  }
-  html,body{
-    height:100%;
-    margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font-family:var(--mono);
-    line-height:1.9
-  }
-  .wrap{
-    max-width:980px;
-    margin:40px auto;
-    padding:28px;
-    border:1px solid #1f1f1f;
-    background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);
-    box-shadow:0 10px 30px rgba(0,0,0,0.6)
-  }
-  header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    border-bottom:1px solid #222;
-    padding-bottom:12px;
-    margin-bottom:18px
-  }
-  header h1{
-    font-size:1.4rem;
-    letter-spacing:.08em;
-    margin:0
-  }
-  header .meta{
-    font-size:0.85rem;
-    color:var(--muted);
-    text-align:right
-  }
-  .section{
-    background:var(--card);
-    padding:18px;
-    border-left:4px solid #222;
-    margin:18px 0;
-    border-radius:4px
-  }
-  .section h2{
-    margin:0 0 8px 0;
-    color:var(--accent);
-    font-size:1.05rem
-  }
-  .section p{
-    margin:8px 0;
-    color:var(--text)
-  }
-  .bullets{
-    margin:8px 0 0 1.1em
-  }
-  .bullets li{
-    margin:6px 0
-  }
-  .note{
-    font-size:0.9rem;
-    color:var(--muted);
-    margin-top:12px;
-    padding-top:8px;
-    border-top:1px dashed #222
-  }
-  .footer{
-    margin-top:20px;
-    text-align:right;
-    color:var(--muted);
-    font-size:0.9rem
-  }
-  .warn{color:#ffb86b;font-weight:600}
-  .sig{margin-top:18px}
-  a{color:#fff;text-decoration:underline}
-  .hero{
-    width:100%;
-    height:auto;
-    border-radius:6px;
-    object-fit:cover;
-    display:block;
-    margin:0 auto
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>湯田伊織の記録 | 狭間書房</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #f5f5f5;
+      font-family: "Hiragino Mincho ProN", "MS Mincho", serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
 
-  /* 戻るボタン */
-  .back-btn-wrap {
-    text-align: center;
-    margin: 40px 0;
-  }
-  .back-btn {
-    background: #454545;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 0.95rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  .back-btn:hover {
-    background: #454545;
-  }
-</style>
+    /* ヘッダー */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em 2em;
+      background-color: #666;
+      color: #fff;
+    }
+    .title-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3em;
+      letter-spacing: 0.1em;
+      line-height: 1;
+      border: none;
+    }
+    .subtitle {
+      margin: 0;
+      padding: 0;
+      line-height: 1;
+      font-size: 1em;
+      text-align: center;
+      color: #fff;
+    }
+
+    /* 検索 */
+    .search {
+      display: flex;
+      align-items: center;
+    }
+    .search input {
+      padding: 4px;
+      border: 2px solid #333;
+      border-radius: 4px;
+      width: 150px;
+      background-color: #fff;
+      color: #333;
+    }
+    .search input::placeholder {
+      color: #333aa;
+    }
+    .search button {
+      padding: 4px 6px;
+      margin-left: 4px;
+      border-radius: 4px;
+      border: none;
+      background-color: #333;
+      color: #fff;
+      cursor: pointer;
+    }
+    .search button:hover {
+      background-color: #222;
+    }
+
+    /* ナビゲーション */
+    nav {
+      text-align: center;
+      padding: 1em 0;
+      background-color: #f0f0f0;
+    }
+    nav a {
+      color: #333;
+      margin: 0 1em;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #666;
+    }
+    nav a.active {
+      color: #666;
+      border-bottom: 2px solid #666;
+    }
+
+    /* コンテナ */
+    .container {
+      max-width: 800px;
+      margin: 3em auto;
+      padding: 0 2em;
+    }
+
+    .record-header {
+      border-bottom: 1px solid #444;
+      padding-bottom: 1em;
+      margin-bottom: 2em;
+    }
+
+    .record-header h2 {
+      margin: 0 0 0.5em 0;
+      font-size: 1.8em;
+      color: #fff;
+      letter-spacing: 0.1em;
+    }
+
+    .record-meta {
+      color: #999;
+      font-size: 0.9em;
+    }
+
+    .record-content {
+      background-color: #111;
+      padding: 2.5em;
+      border: 1px solid #444;
+      box-shadow: 0 0 20px rgba(255,255,255,0.1);
+      line-height: 2;
+      margin-bottom: 3em;
+    }
+
+    .record-content p {
+      margin: 1.5em 0;
+      text-indent: 1em;
+    }
+
+    .record-content p:first-child {
+      margin-top: 0;
+    }
+
+    .record-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 添付資料セクション */
+    .attachment-section {
+      background-color: #0a0a0a;
+      border: 2px solid #333;
+      padding: 2em;
+      text-align: center;
+    }
+
+    .attachment-section h3 {
+      margin: 0 0 1em 0;
+      font-size: 1.3em;
+      color: #fff;
+      letter-spacing: 0.1em;
+    }
+
+    .attachment-notice {
+      color: #999;
+      font-size: 0.9em;
+      margin-bottom: 1.5em;
+    }
+
+    .protected-link {
+      display: inline-block;
+      color: #32a9cd;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 1.1em;
+      padding: 0.8em 2em;
+      border: 1px solid #32a9cd;
+      transition: all 0.3s;
+    }
+
+    .protected-link:hover {
+      background-color: #32a9cd;
+      color: #000;
+    }
+
+    /* モーダル */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      animation: fadeIn 0.3s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background-color: #111;
+      margin: 12% auto;
+      padding: 2.5em 3em;
+      border: 2px solid #444;
+      width: 90%;
+      max-width: 450px;
+      box-shadow: 0 0 40px rgba(50, 169, 205, 0.3);
+      animation: slideDown 0.3s;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .close {
+      color: #999;
+      float: right;
+      font-size: 2em;
+      font-weight: bold;
+      line-height: 0.8;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .close:hover {
+      color: #ff6666;
+    }
+
+    .modal h2 {
+      text-align: center;
+      margin: 0.5em 0 1.5em 0;
+      font-size: 1.5em;
+      color: #fff;
+      letter-spacing: 0.1em;
+    }
+
+    .modal label {
+      display: block;
+      margin-bottom: 0.5em;
+      color: #ccc;
+      font-size: 0.95em;
+    }
+
+    .modal input {
+      width: 100%;
+      padding: 0.8em;
+      margin-bottom: 1.2em;
+      background-color: #000;
+      border: 1px solid #666;
+      color: #fff;
+      font-family: "Hiragino Mincho ProN", "MS Mincho", serif;
+      box-sizing: border-box;
+      font-size: 1em;
+    }
+
+    .modal input:focus {
+      outline: none;
+      border-color: #32a9cd;
+      box-shadow: 0 0 5px rgba(50, 169, 205, 0.5);
+    }
+
+    .modal button {
+      width: 100%;
+      padding: 0.9em;
+      background-color: #000;
+      border: 1px solid #888;
+      color: #f5f5f5;
+      cursor: pointer;
+      font-size: 1em;
+      font-family: "Hiragino Mincho ProN", "MS Mincho", serif;
+      transition: all 0.3s ease;
+    }
+
+    .modal button:hover {
+      background-color: #111;
+      border-color: #32a9cd;
+      box-shadow: 0 0 10px rgba(50, 169, 205, 0.3);
+    }
+
+    .error {
+      color: #ff6666;
+      text-align: center;
+      margin-bottom: 1em;
+      font-size: 0.9em;
+      min-height: 1.2em;
+    }
+
+    /* フッター */
+    footer {
+      background-color: #666;
+      color: #ffffff;
+      text-align: center;
+      padding: 1em;
+      margin-top: 3em;
+    }
+  </style>
 </head>
 <body>
-  <div class="wrap" role="main" aria-labelledby="title">
-    <header>
-      <h1 id="title">計画書</h1>
-      <div class="meta">
-        作成者：湯田 伊織<br>
-        作成年月日：2025-07-16
-      </div>
-    </header>
+  <header>
+    <div class="title-wrapper">
+      <h1>狭間書房</h1>
+      <p class="subtitle">Hazama Publishing</p>
+    </div>
+    <div class="search">
+      <form action="https://hazamashobo.github.io/result/" method="get">
+        <input type="text" id="searchInput" name="q" placeholder="キーワードを入力">
+        <button type="submit">検索</button>
+      </form>
+    </div>
+  </header>
 
-    <section class="section">
-      <h2>1. 目的（Objective）</h2>
-      <p>本計画は、桐須瑛人を狭間の空間（Liminal space）に幽閉することで社内の風潮を刷新し、長期的な書籍価値の維持に寄与することを目的とする。</p>
-    </section>
+  <nav>
+    <a href="https://hazamashobo.github.io/main/index.html">ホーム</a>
+    <a href="https://hazamashobo.github.io/company/index.html">狭間書房について</a>
+    <a href="https://hazamashobo.github.io/books/index.html">刊行物</a>
+    <a href="https://hazamashobo.github.io/contact/index.html">お問い合わせ</a>
+  </nav>
 
-    <section class="section">
-      <h2>2. 背景（Background）</h2>
-      <p>弊社の出版物のデジタル化に対して、桐須氏は否定的な態度を見せた。スペース削減、流通の効率化、保存性、共有性、あらゆる側面において電子書籍は紙書籍より優れている。現体制のまま出版業界で生き残ることに限界を感じている旨も伝えたが、桐須氏の意思は固かった。<br>
-      同時期、株式会社 芸文社に勤める旧友よりM＆Aの話を耳にした。最悪の状況を避けるために反対勢力を排除し、狭間書房の再建を試みる。</p>
-    </section>
+  <div class="container">
+    <div class="record-header">
+      <h2>記録</h2>
+    </div>
 
-    <section class="section">
-      <h2>3. 実施内容（Content）</h2>
-      <p>「Liminal space」にまつわる都市伝説の有効性が確認されたため、実行する。<br>
-      以下がその都市伝説の概要である。<br>
-      -------------------------------------<br>
-      　Liminal spaceは、誰もいない廊下、階段、無人駅などの空間を指し、特定の条件が揃うと「狭間の空間」が開く。<br>
-      「狭間の空間」は時間の流れを感じることがない。閉じ込められたものは空腹も渇きもなく、怪我や病気で死ぬこともない。意識はあるが、外界との接触は完全に遮断され、ただ「存在しているだけ」の状態が続く。<br>
-        Liminal spaceから脱出する唯一の方法は、「ドアの写真」を受け取ることだ。この世のどこかにある「専用のフォーム」から、対象者に向けてドアの写真を送る必要がある。<br>
-      -------------------------------------<br>
-      この空間に桐須氏を幽閉する。「専用のフォーム」については見つかっていないが、使う予定もない。
-      </p>
-    </section>
+    <div class="record-content">
+      <p>前職で電子書籍に詳しいときいた鳥羽さんと一緒に編集長に電子書籍化について話をしてみた。</p>
+      <p>編集長は話を聞いてくれているけれどなかなか首を縦に振ってくれない。</p>
+      
+      <p>確かに、狭間書房はずっと紙媒体にこだわってきた。でも、時代は確実に変わっている。電子コミックのCMは毎日見るし広告にもバンバン出てきている。</p>
+      
+      <p>伝統を守ることがそんなに大事か？変化を恐れているだけじゃないのか。本当に読者のことを考えているのか。どうすれば我々の本がより多くの人に届くかを考えれば答えは一つだろ。</p>
+      
+      <p>俺は諦めない。このままだと狭間書房が終わる。完全に本より動画が優位な世界になる前に、この流れを変えたい。</p>
+      <p>そのためには、手段を選ばない。</p>
 
-    <section class="section">
-      <h2>4. 想定効果（Expected Effects）</h2>
-      <ul class="bullets">
-        <li>電子書籍化導入による経営の再建</li>
-        <li>ターゲットの拡大</li>
-      </ul>
-    </section>
+      <p>ずっと温めていた計画を今こそ実行するべきだ。</p>
+     
+      <p>①011のBの隣</p>
+      <p>②019の4のあいだ</p>
+      <p>③002の一番大きい数字</p>
+      <p>④010の短針の先</p>
+      <p>これが資料パスワードのヒントだ。まさか自分が出版した本に助けられるなんて滑稽だな。</p>
+      
+      
+      <p>中身を見られたって構わない。誰も俺を止めることはできない。</p>
+      
+    </div>
 
-    <section class="section">
-      <h2>5. リスク評価（Risk Assessment）</h2>
-      <ul class="bullets">
-        <li>個人感情の深刻化：当事者の心理的負荷が増す恐れあり。</li>
-        <li>代表不在による社内体制の混乱：薮副編集長の様子を窺いつつ対応。</li>
-        <li>逆効果の可能性：象徴措置がかえって信仰心・忠誠心を助長する懸念。</li>
-        <li>行方不明者の捜索による警察の介入：「6.緊急事対応」を参照。</li>
-      </ul>
-      <p class="note">※ 上記リスクは実施前に軽減策を講じること。</p>
-    </section>
-
-    <section class="section">
-      <h2>6. 緊急時対応（Contingency）</h2>
-      <p>想定外の事態が発生した場合は、速やかに以下を発動する。</p>
-      <ul class="bullets">
-        <li>外部法律顧問への緊急相談</li>
-        <li>社外秘データの削除</li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <h2>7. 結び（Summary）</h2>
-      <p>本計画は「象徴的な不在」を通じて弊社の方針を刷新するための概念案である。全ては書籍および狭間書房の未来のための計画である。<br>
-      最後に、社員の名前、誕生日、状況、全ての要素が一致し、私が全ての計画を着想した元である一枚の絵に敬意を示して計画書の完成とする。</p>
-      <div class="sig">
-        <img id="hero" class="hero" src="gazou/last.jpg" alt="レオナルド・ダ・ヴィンチ『最後の晩餐』" />
-      </div>
-    </section>
+    <div class="attachment-section">
+      <h3>添付資料</h3>
+      <p class="attachment-notice">※ この資料の閲覧にはパスワードが必要です</p>
+      <a href="#" class="protected-link" id="attachmentLink">電子書籍化提案資料を開く</a>
+    </div>
   </div>
 
-  <!-- 戻るボタン -->
-  <div class="back-btn-wrap">
-    <button class="back-btn" onclick="history.back()">戻る</button>
+  <!-- パスワード入力モーダル -->
+  <div id="passwordModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>資料アクセス</h2>
+      <div class="error" id="errorMsg"></div>
+      <label for="passwordInput">パスワードを入力してください</label>
+      <input type="password" id="passwordInput" placeholder="半角数字4桁">
+      <button id="submitPassword">確認</button>
+    </div>
   </div>
 
+  <footer>
+    <p>© 2025 狭間書房</p>
+  </footer>
+
+  <script>
+    const modal = document.getElementById('passwordModal');
+    const closeBtn = document.querySelector('.close');
+    const passwordInput = document.getElementById('passwordInput');
+    const submitBtn = document.getElementById('submitPassword');
+    const errorMsg = document.getElementById('errorMsg');
+    const attachmentLink = document.getElementById('attachmentLink');
+    
+    const targetUrl = 'https://acrobat.adobe.com/id/urn:aaid:sc:AP:3b719823-27d7-4b68-8591-44ba97b2cff3';
+    const correctPassword = '2569';
+
+    // 添付資料リンクをクリック
+    attachmentLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      modal.style.display = 'block';
+      passwordInput.value = '';
+      errorMsg.textContent = '';
+      passwordInput.focus();
+    });
+
+    // 閉じるボタン
+    closeBtn.addEventListener('click', function() {
+      modal.style.display = 'none';
+    });
+
+    // モーダル外をクリックしても閉じる
+    window.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    // パスワード確認ボタン
+    submitBtn.addEventListener('click', checkPassword);
+
+    // Enterキーでも送信
+    passwordInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        checkPassword();
+      }
+    });
+
+    function checkPassword() {
+      const inputPassword = passwordInput.value;
+      
+      if (inputPassword === correctPassword) {
+        modal.style.display = 'none';
+        window.open(targetUrl, '_blank');
+      } else {
+        errorMsg.textContent = 'パスワードが正しくありません';
+        passwordInput.value = '';
+        passwordInput.focus();
+      }
+    }
+  </script>
 </body>
 </html>
-
