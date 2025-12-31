@@ -5,13 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>湯田伊織の記録 | 狭間書房</title>
   <style>
-    body {
-      background-color: #000;
-      color: #f5f5f5;
-      font-family: "Hiragino Mincho ProN", "MS Mincho", serif;
+    html, body {
+      height: 100%;
       margin: 0;
       padding: 0;
-      min-height: 100vh;
+      width: 100%;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body {
+      background-color: #111;
+      color: #f5f5f5;
+      font-family: "Hiragino Mincho ProN", "MS Mincho", serif;
+      line-height: 1.8;
     }
 
     /* ヘッダー */
@@ -22,10 +30,25 @@
       padding: 1em 2em;
       background-color: #666;
       color: #fff;
+      flex-shrink: 0;
+      gap: 2em;
+      box-sizing: border-box;
+      width: 100%;
     }
     .title-wrapper {
       display: flex;
       flex-direction: column;
+    }
+    .title-wrapper a {
+      text-decoration: none;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .title-wrapper a:hover h1 {
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
     }
     header h1 {
       margin: 0;
@@ -33,6 +56,8 @@
       letter-spacing: 0.1em;
       line-height: 1;
       border: none;
+      font-family: "Hiragino Mincho ProN", "MS Mincho", serif;
+      font-weight: 700;
     }
     .subtitle {
       margin: 0;
@@ -47,6 +72,14 @@
     .search {
       display: flex;
       align-items: center;
+      gap: 0.5em;
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+    .search form {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
     }
     .search input {
       padding: 4px;
@@ -61,12 +94,13 @@
     }
     .search button {
       padding: 4px 6px;
-      margin-left: 4px;
       border-radius: 4px;
       border: none;
       background-color: #333;
       color: #fff;
       cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .search button:hover {
       background-color: #222;
@@ -77,12 +111,18 @@
       text-align: center;
       padding: 1em 0;
       background-color: #f0f0f0;
+      flex-shrink: 0;
+      overflow-x: auto;
+      box-sizing: border-box;
+      width: 100%;
     }
     nav a {
-      color: #333;
+      color: #003366;
       margin: 0 1em;
       text-decoration: none;
       font-weight: bold;
+      display: inline-block;
+      white-space: nowrap;
     }
     nav a:hover {
       color: #666;
@@ -92,11 +132,14 @@
       border-bottom: 2px solid #666;
     }
 
-    /* コンテナ */
-    .container {
-      max-width: 800px;
-      margin: 3em auto;
+    /* メインコンテンツ */
+    main {
+      flex: 1;
+      max-width: 1200px;
+      margin: 2em auto;
       padding: 0 2em;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .record-header {
@@ -112,23 +155,20 @@
       letter-spacing: 0.1em;
     }
 
-    .record-meta {
-      color: #999;
-      font-size: 0.9em;
-    }
-
     .record-content {
-      background-color: #111;
+      background-color: #1a1a1a;
       padding: 2.5em;
       border: 1px solid #444;
       box-shadow: 0 0 20px rgba(255,255,255,0.1);
       line-height: 2;
       margin-bottom: 3em;
+      box-sizing: border-box;
     }
 
     .record-content p {
       margin: 1.5em 0;
       text-indent: 1em;
+      word-wrap: break-word;
     }
 
     .record-content p:first-child {
@@ -145,6 +185,7 @@
       border: 2px solid #333;
       padding: 2em;
       text-align: center;
+      box-sizing: border-box;
     }
 
     .attachment-section h3 {
@@ -195,7 +236,7 @@
     }
 
     .modal-content {
-      background-color: #111;
+      background-color: #1a1a1a;
       margin: 12% auto;
       padding: 2.5em 3em;
       border: 2px solid #444;
@@ -203,6 +244,7 @@
       max-width: 450px;
       box-shadow: 0 0 40px rgba(50, 169, 205, 0.3);
       animation: slideDown 0.3s;
+      box-sizing: border-box;
     }
 
     @keyframes slideDown {
@@ -295,19 +337,210 @@
       color: #ffffff;
       text-align: center;
       padding: 1em;
-      margin-top: 3em;
+      flex-shrink: 0;
+      margin-top: auto;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 768px) {
+      header {
+        padding: 1em;
+        justify-content: center;
+        text-align: center;
+        flex-wrap: wrap;
+        gap: 1em;
+      }
+
+      header h1 {
+        font-size: 2em;
+      }
+
+      .title-wrapper {
+        width: 100%;
+      }
+
+      .search {
+        width: 100%;
+      }
+
+      .search form {
+        width: 100%;
+        display: flex;
+      }
+
+      .search input {
+        width: 100%;
+        flex: 1;
+      }
+
+      nav a {
+        margin: 0 0.5em;
+        font-size: 0.9em;
+      }
+
+      main {
+        padding: 0 1em;
+        margin: 1em auto;
+      }
+
+      .record-header h2 {
+        font-size: 1.5em;
+      }
+
+      .record-content {
+        padding: 1.8em;
+        line-height: 1.9;
+      }
+
+      .record-content p {
+        margin: 1.2em 0;
+        font-size: 0.95em;
+      }
+
+      .attachment-section {
+        padding: 1.5em;
+      }
+
+      .attachment-section h3 {
+        font-size: 1.2em;
+      }
+
+      .protected-link {
+        font-size: 1em;
+        padding: 0.7em 1.5em;
+      }
+
+      .modal-content {
+        padding: 2em;
+        margin: 15% auto;
+      }
+
+      .modal h2 {
+        font-size: 1.3em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        flex-direction: column;
+        gap: 0.5em;
+      }
+
+      header h1 {
+        font-size: 1.5em;
+      }
+
+      .subtitle {
+        font-size: 0.9em;
+      }
+
+      .search {
+        width: 100%;
+      }
+
+      .search input {
+        width: 100%;
+        padding: 0.5em;
+      }
+
+      .search button {
+        padding: 0.5em 0.8em;
+        font-size: 0.9em;
+      }
+
+      nav a {
+        margin: 0 0.3em;
+        font-size: 0.8em;
+      }
+
+      main {
+        padding: 0 0.8em;
+        margin: 0.8em auto;
+      }
+
+      .record-header {
+        margin-bottom: 1.5em;
+      }
+
+      .record-header h2 {
+        font-size: 1.3em;
+      }
+
+      .record-content {
+        padding: 1.5em;
+        line-height: 1.8;
+        margin-bottom: 2em;
+      }
+
+      .record-content p {
+        margin: 1em 0;
+        font-size: 0.9em;
+        text-indent: 0.8em;
+      }
+
+      .attachment-section {
+        padding: 1.2em;
+      }
+
+      .attachment-section h3 {
+        font-size: 1.1em;
+        margin-bottom: 0.8em;
+      }
+
+      .attachment-notice {
+        font-size: 0.85em;
+        margin-bottom: 1.2em;
+      }
+
+      .protected-link {
+        font-size: 0.95em;
+        padding: 0.7em 1.2em;
+      }
+
+      .modal-content {
+        padding: 1.5em;
+        margin: 20% auto;
+        max-width: 90%;
+      }
+
+      .modal h2 {
+        font-size: 1.2em;
+        margin: 0.3em 0 1.2em 0;
+      }
+
+      .modal label {
+        font-size: 0.9em;
+      }
+
+      .modal input {
+        padding: 0.7em;
+        font-size: 0.95em;
+      }
+
+      .modal button {
+        padding: 0.8em;
+        font-size: 0.95em;
+      }
+
+      .close {
+        font-size: 1.8em;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="title-wrapper">
-      <h1>狭間書房</h1>
-      <p class="subtitle">Hazama Publishing</p>
+      <a href="https://hazamashobo.github.io/main/index.html">
+        <h1>狭間書房</h1>
+        <p class="subtitle">Hazama Publishing</p>
+      </a>
     </div>
     <div class="search">
       <form action="https://hazamashobo.github.io/result/" method="get">
-        <input type="text" id="searchInput" name="q" placeholder="キーワードを入力">
+        <input type="text" id="searchInput" name="q" placeholder="キーワード入力">
         <button type="submit">検索</button>
       </form>
     </div>
@@ -320,7 +553,7 @@
     <a href="https://hazamashobo.github.io/contact/index.html">お問い合わせ</a>
   </nav>
 
-  <div class="container">
+  <main>
     <div class="record-header">
       <h2>記録</h2>
     </div>
@@ -331,12 +564,12 @@
       
       <p>確かに、狭間書房はずっと紙媒体にこだわってきた。<br>　でも、時代は変化している。電子コミックのCMは毎日見るし、広告にもバンバン出る。</p>
       
-      <p>伝統を守ることがそんなに大事か？変化が怖いだけじゃないのか。<br>　どうすれば我々の本がより多くの人に届くかを考えれば答えは一つだろ。</p>
+      <p>伝統を守ることがそんなに大事か？変化が怖いだけじゃないのか。<br>　どうすれば我々の本がより多くの人に届くかを考えれば答えは一つだろう。</p>
       
       <p>俺は諦めない。このままだと狭間書房が終わる。<br>　完全に本より動画が優位な世界になる前に、この流れを変えたい。</p>
       <p>そのためには、手段を選ばない。</p>
 
-      <p>ずっと温めていたこの計画を、今こそ実行するべきだ。</p>
+      <p>ずっと温めていたこの計画を、今こそ実行すべきだ。</p>
      
       <p><b>① 063の矢印の下<br>　② 002の一番大きい偶数<br>　③ 036内田が入った扉<br>　④ 010の短針の先</b></p>
       <p>これが資料パスワードのヒントだ。まさか自分が出版した本に助けられるなんて滑稽だな。</p>
@@ -351,7 +584,7 @@
       <p class="attachment-notice">※ この資料の閲覧にはパスワードが必要です</p>
       <a href="#" class="protected-link" id="attachmentLink">資料を開く</a>
     </div>
-  </div>
+  </main>
 
   <!-- パスワード入力モーダル -->
   <div id="passwordModal" class="modal">
@@ -366,7 +599,7 @@
   </div>
 
   <footer>
-    <p>© 2025 狭間書房</p>
+    <p>© 2025 狭間書房　（26/33）</p>
   </footer>
 
   <script>
